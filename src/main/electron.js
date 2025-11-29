@@ -1171,8 +1171,18 @@ app.whenReady().then(() =>
 		owner: 'jgraph'
 	})
 	
-	if (store == null || (!disableUpdate && !store.get('dontCheckUpdates')))
+	// Cache update check - only check once per 24 hours to avoid repeated messages
+	const UPDATE_CHECK_INTERVAL = 24 * 60 * 60 * 1000; // 24 hours
+	const lastUpdateCheck = store?.get('lastUpdateCheck') || 0;
+	const shouldCheckUpdates = Date.now() - lastUpdateCheck > UPDATE_CHECK_INTERVAL;
+	
+	if (store == null || (!disableUpdate && !store.get('dontCheckUpdates') && shouldCheckUpdates))
 	{
+		if (store != null)
+		{
+			store.set('lastUpdateCheck', Date.now());
+		}
+		
 		autoUpdater.checkForUpdates()
 	}
 })
