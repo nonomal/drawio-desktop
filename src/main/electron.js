@@ -1171,8 +1171,10 @@ app.whenReady().then(() =>
 		owner: 'jgraph'
 	})
 	
-	// Cache update check - only check once per 24 hours to avoid repeated messages
-	const UPDATE_CHECK_INTERVAL = 24 * 60 * 60 * 1000; // 24 hours
+	// Cache update check - configurable interval (default: 24 hours)
+	const DEFAULT_UPDATE_CHECK_HOURS = 24;
+	const updateCheckHours = store?.get('updateCheckIntervalHours') ?? DEFAULT_UPDATE_CHECK_HOURS;
+	const UPDATE_CHECK_INTERVAL = updateCheckHours * 60 * 60 * 1000;
 	const lastUpdateCheck = store?.get('lastUpdateCheck') || 0;
 	const shouldCheckUpdates = Date.now() - lastUpdateCheck > UPDATE_CHECK_INTERVAL;
 	
