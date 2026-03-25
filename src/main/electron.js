@@ -490,7 +490,7 @@ app.whenReady().then(() =>
 			.option('-g, --page-range <from>..<to>',
 				'selects a page range (1-based, for PDF format only)', argsRange)
 			.option('-u, --uncompressed',
-				'Uncompressed XML output (for XML format only)')
+				'Uncompressed XML output (for XML and SVG format only)')
 			.option('-z, --zoom <zoom>',
 				'scales the application interface', parseFloat)
 			.option('--svg-theme <theme>',
