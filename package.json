@@ -1,12 +1,12 @@
 {
   "name": "draw.io",
-  "version": "29.7.9",
+  "version": "29.7.12",
   "description": "draw.io desktop",
   "exports": "./src/main/electron.js",
   "type": "module",
   "main": "src/main/electron.js",
   "engines": {
-    "node": ">=20"
+    "node": ">=22.12.0"
   },
   "scripts": {
     "start": "electron .",

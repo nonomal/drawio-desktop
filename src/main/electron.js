@@ -174,8 +174,11 @@ catch(e)
 //app.enableSandbox(); // This maybe the reason snap stopped working
 
 // Only allow request from the app code itself
-function validateSender (frame) 
+function validateSender (frame)
 {
+	// senderFrame may be null if the frame has navigated or been destroyed
+	// before the IPC handler runs (documented behaviour on IpcMainEvent).
+	if (frame == null) return false;
 	return frame.url.replace(/\/.\:\//, str => str.toUpperCase()).startsWith(codeUrl);
 }
 
