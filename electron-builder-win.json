@@ -15,6 +15,9 @@
   },
   "win": {
     "publisherName": ["JGraph Ltd", "draw.io Ltd"],
+    "signtoolOptions": {
+      "sign": "build/sign-trusted.mjs"
+    },
     "target": [
       {
           "target": "nsis",
