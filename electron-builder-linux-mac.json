@@ -1,6 +1,6 @@
 {
   "appId": "com.jgraph.drawio.desktop",
-  "copyright": "Copyright 2017-2019 draw.io",
+  "copyright": "Copyright 2017-2026 draw.io Ltd",
   "asar": true,
   "files": [
     "**/*",
@@ -20,6 +20,43 @@
   	"entitlements": "build/entitlements.mac.plist",
   	"entitlementsInherit": "build/entitlements.mac.plist",
     "category": "public.app-category.graphics-design",
+    "extendInfo": {
+      "UTExportedTypeDeclarations": [
+        {
+          "UTTypeIdentifier": "com.jgraph.drawio",
+          "UTTypeDescription": "draw.io Diagram",
+          "UTTypeConformsTo": ["public.xml", "public.data"],
+          "UTTypeTagSpecification": {
+            "public.filename-extension": ["drawio"],
+            "public.mime-type": ["application/vnd.jgraph.mxfile"]
+          }
+        }
+      ],
+      "CFBundleDocumentTypes": [
+        {
+          "CFBundleTypeExtensions": ["drawio"],
+          "CFBundleTypeName": "draw.io Diagram",
+          "CFBundleTypeRole": "Editor",
+          "CFBundleTypeIconFile": "icon.icns",
+          "LSItemContentTypes": ["com.jgraph.drawio"],
+          "LSHandlerRank": "Owner"
+        },
+        {
+          "CFBundleTypeExtensions": ["vsdx"],
+          "CFBundleTypeName": "VSDX Document",
+          "CFBundleTypeRole": "Editor",
+          "CFBundleTypeIconFile": "icon.icns",
+          "LSHandlerRank": "Default"
+        },
+        {
+          "CFBundleTypeExtensions": ["mmd", "mermaid"],
+          "CFBundleTypeName": "Mermaid Diagram",
+          "CFBundleTypeRole": "Editor",
+          "CFBundleTypeIconFile": "icon.icns",
+          "LSHandlerRank": "Default"
+        }
+      ]
+    },
     "target": [
       { "target": "zip", "arch": [
           "x64",
@@ -35,14 +72,19 @@
     ]
   },
   "afterSign": "build/notarize.mjs",
-  "afterPack": "build/fuses.cjs",
+  "afterPack": "build/fuses.mjs",
   "dmg": {
   },
   "linux": {
   	"executableName": "drawio",
     "category": "Graphics",
-    "maintainer": "JGraph <support@draw.io>",
+    "maintainer": "draw.io <desktop@draw.io>",
     "icon": "./build",
+    "desktop": {
+      "entry": {
+        "StartupWMClass": "draw.io"
+      }
+    },
     "target": [
       { "target": "AppImage", "arch": [
           "x64",
@@ -80,6 +122,13 @@
 	  	"name": "VSDX Document",
 	  	"description": "VSDX Document",
 	  	"mimeType": "application/vnd.visio",
+	  	"role": "Editor"
+	  },
+	  {
+	  	"ext": ["mmd", "mermaid"],
+	  	"name": "Mermaid Diagram",
+	  	"description": "Mermaid Diagram",
+	  	"mimeType": "text/vnd.mermaid",
 	  	"role": "Editor"
 	  }
   ]

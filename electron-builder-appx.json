@@ -1,6 +1,6 @@
 {
   "appId": "com.jgraph.drawio.desktop",
-  "copyright": "Copyright 2017-2019 draw.io",
+  "copyright": "Copyright 2017-2026 draw.io Ltd",
   "asar": true,
   "files": [
     "**/*",
@@ -30,7 +30,7 @@
     "identityName": "draw.io.draw.ioDiagrams",
     "publisher": "CN=9E628CCB-BE04-4557-A5A8-81EC34B09733"
   },
-  "afterPack": "build/fuses.cjs",
+  "afterPack": "build/fuses.mjs",
   "fileAssociations": [
 	  {
 	  	"ext": "drawio",
@@ -44,6 +44,13 @@
 	  	"name": "VSDX Document",
 	  	"description": "VSDX Document",
 	  	"mimeType": "application/vnd.visio",
+	  	"role": "Editor"
+	  },
+	  {
+	  	"ext": ["mmd", "mermaid"],
+	  	"name": "Mermaid Diagram",
+	  	"description": "Mermaid Diagram",
+	  	"mimeType": "text/vnd.mermaid",
 	  	"role": "Editor"
 	  }
   ]
